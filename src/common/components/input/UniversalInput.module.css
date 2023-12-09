@@ -1,0 +1,29 @@
+@keyframes inputBorder {
+  0% {
+    border-image: linear-gradient(to right, #fff 99%, dodgerblue 1%, #fff 99%);
+    border-image-slice: 1;
+  }
+
+  100% {
+    border-image: linear-gradient(to right, dodgerblue 100%, #fff 1%);
+    border-bottom: dodgerblue 2px solid;
+    border-image-slice: 1;
+  }
+}
+
+.universalInput {
+  display: block;
+  margin: 0 10px 0 0;
+  max-width: 400px;
+}
+.sss {
+  background-color: #000;
+  color: green;
+}
+.modified {
+  outline: none;
+  border: none;
+  border-bottom: #fff 1px solid;
+  background-color: transparent;
+  color: white;
+}
