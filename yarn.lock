@@ -5491,6 +5491,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-checkbox@npm:~2.4.0":
+  version: 2.4.0
+  resolution: "expo-checkbox@npm:2.4.0"
+  checksum: 388d89e50f66dcfdebdbfa6c58ba034f039a5d31f6e866bd8b39433e2b31c82b4ae36bc753f8ee0732a096c02f0ce3be6fdab788779fe32bb570f21afb3a8fe5
+  languageName: node
+  linkType: hard
+
 "expo-constants@npm:~14.4.2":
   version: 14.4.2
   resolution: "expo-constants@npm:14.4.2"
@@ -11370,6 +11377,7 @@ __metadata:
     axios: "npm:^1.6.2"
     babel-plugin-module-resolver: "npm:^5.0.0"
     expo: "npm:~49.0.15"
+    expo-checkbox: "npm:~2.4.0"
     expo-status-bar: "npm:~1.6.0"
     formik: "npm:^2.4.5"
     react: "npm:18.2.0"

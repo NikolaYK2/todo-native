@@ -1,18 +1,19 @@
-import React, { memo, useCallback } from "react";
-import {Text, View} from "react-native";
+import React, {memo, ReactNode, useCallback} from "react";
+import {Pressable, TouchableOpacity} from "react-native";
 
 type ButtonType = {
   name?: string;
   callBack: () => void;
   style?: string;
   disabled?: boolean;
+  children: ReactNode
 };
-export const Button: React.FC<ButtonType> = memo(({ name, ...props }) => {
+export const Button: React.FC<ButtonType> = memo(({name, ...props}) => {
   const onclickHandler = useCallback(() => {
     props.callBack();
   }, [props]);
   return (
-    <View>
+    <Pressable>
       {/*<button*/}
       {/*  onClick={onclickHandler}*/}
       {/*  className={`${props.style} ${s.button} ${props.disabled && s.disabled}`}*/}
@@ -20,7 +21,9 @@ export const Button: React.FC<ButtonType> = memo(({ name, ...props }) => {
       {/*>*/}
       {/*  {name}*/}
       {/*</button>*/}
-      <Text>Button</Text>
-    </View>
+      <TouchableOpacity onLongPress={onclickHandler} disabled={props.disabled}>
+        {props.children}
+      </TouchableOpacity>
+    </Pressable>
   );
 });

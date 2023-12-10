@@ -1,5 +1,6 @@
-import React, { ChangeEvent, KeyboardEvent, useCallback } from "react";
-import {Text, View} from "react-native";
+import React, {KeyboardEvent, useCallback} from "react";
+import {TextInput, View} from "react-native";
+import {globalStyle} from "assets/style/globalStyle";
 
 type UniversalInputType = {
   setAddTitle: (addTitle: string) => void;
@@ -11,31 +12,44 @@ type UniversalInputType = {
   disabled?: boolean;
 };
 
-export const UniversalInput = React.memo((props: UniversalInputType) => {
+export const UniversalInput = React.memo(({
+                                            error,
+                                            setError,
+                                            setAddTitle,
+                                            addTitle,
+                                            style,
+                                            disabled,
+                                            callback
+                                          }: UniversalInputType) => {
   //добавления значений в инпут============================
   const onChangeHandlerAddTask = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      if (props.error !== null) {
-        props.setError(null); //Когда начинаем писать, ошибка пропадает / можно это прописать и в onKey
+    (event: string) => {
+      // (event: ChangeEvent<HTMLInputElement>) => {
+      if (error !== null) {
+        setError(null); //Когда начинаем писать, ошибка пропадает / можно это прописать и в onKey
       }
-      props.setAddTitle(event.currentTarget.value);
+      setAddTitle(event);
     },
-    [props]
+    []
   );
 
   //Кнопка ввода ENter==================================================
   const onKeyDownHandler = useCallback(
     (event: KeyboardEvent<HTMLInputElement>) => {
       if (event.key === "Enter") {
-        props.callback(); // функция добавления таски
+        callback(); // функция добавления таски
       }
     },
-    [props]
+    []
   );
 
   return (
     <View>
-      <Text>Input</Text>
+      <TextInput
+        style={globalStyle.input}
+        onChangeText={onChangeHandlerAddTask}
+        value={addTitle}
+      />
       {/*<TextField*/}
       {/*  disabled={props.disabled}*/}
       {/*  size="small"*/}
@@ -55,3 +69,4 @@ export const UniversalInput = React.memo((props: UniversalInputType) => {
     </View>
   );
 });
+

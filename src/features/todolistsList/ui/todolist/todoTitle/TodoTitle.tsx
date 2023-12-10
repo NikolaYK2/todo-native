@@ -1,8 +1,9 @@
 import React, {memo, useCallback} from "react";
-import {EditableSpan} from "common/components";
+import {Button, EditableSpan} from "common/components";
 import {useActions} from "common/hooks/useActions";
 import {TodoAppType, todoThunk} from "features/todolistsList/model/todos/todoListsReducer";
-import {Text, View} from "react-native";
+import {View} from "react-native";
+import {MaterialCommunityIcons} from "@expo/vector-icons";
 
 type Props = {
   todolist: TodoAppType;
@@ -24,14 +25,16 @@ export const TodoTitle = memo((props: Props) => {
   );
 
   return (
-    <>
-      <View>
+    <View style={{flexDirection: 'row', justifyContent:'center', marginVertical:15}}>
+      <View style={{marginHorizontal:20}}>
         <EditableSpan title={title} onChange={onChangeHandlerTitleTodolist}/>
       </View>
-      <Text>Button delete</Text>
+      <Button callBack={onClickHandlerDeleteTodolist} disabled={props.todolist.entityStatus === "loading"}>
+        <MaterialCommunityIcons name="delete-forever" size={24} color="black"/>
+      </Button>
       {/*<IconButton onClick={onClickHandlerDeleteTodolist} color={"error"} disabled={props.todolist.entityStatus === "loading"}>*/}
       {/*  <Delete />*/}
       {/*</IconButton>*/}
-    </>
+    </View>
   );
 });

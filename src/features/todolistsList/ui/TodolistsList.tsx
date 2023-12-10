@@ -1,18 +1,18 @@
-import React, { useCallback, useEffect } from "react";
-import { todoThunk } from "features/todolistsList/model/todos/todoListsReducer";
-import { Todolist } from "features/todolistsList/ui/todolist/Todolist";
-import { FullInput } from "common/components/fullInputButton/FullInput";
-import { Navigate } from "react-router-dom";
-import { useAppSelector } from "app/model/store";
-import { optimizedTodolistSelector, statusSelector } from "features/todolistsList/model/todos/todolistSelector";
-import { authSelect } from "features/auth/model/authSelector";
-import { useActions } from "common/hooks/useActions";
+import React, {useCallback, useEffect} from "react";
+import {todoThunk} from "features/todolistsList/model/todos/todoListsReducer";
+import {Todolist} from "features/todolistsList/ui/todolist/Todolist";
+import {FullInput} from "common/components/fullInputButton/FullInput";
+import {useAppSelector} from "app/model/store";
+import {optimizedTodolistSelector, statusSelector} from "features/todolistsList/model/todos/todolistSelector";
+import {authSelect} from "features/auth/model/authSelector";
+import {useActions} from "common/hooks/useActions";
 import {View} from "react-native";
+import {globalStyle} from "assets/style/globalStyle";
 
 type TodolistsListType = {
   demo?: boolean;
 };
-export const TodolistsList: React.FC<TodolistsListType> = ({ demo = false }) => {
+export const TodolistsList: React.FC<TodolistsListType> = ({demo = false}) => {
   const todoLists = useAppSelector(optimizedTodolistSelector);
   const isLoggedIn = useAppSelector(authSelect);
   const status = useAppSelector(statusSelector);
@@ -24,12 +24,12 @@ export const TodolistsList: React.FC<TodolistsListType> = ({ demo = false }) => 
     if (demo || !isLoggedIn) {
       return;
     }
-   setTodolists();
+    setTodolists();
   }, [setTodolists, demo, isLoggedIn]);
 
   const addTodolist = useCallback((title: string) => {
-      return addTodo(title).unwrap();
-    }, [addTodo]);
+    return addTodo(title).unwrap();
+  }, [addTodo]);
 
 
   // if (!isLoggedIn) {
@@ -37,8 +37,8 @@ export const TodolistsList: React.FC<TodolistsListType> = ({ demo = false }) => 
   // }
   //
   return (
-    <View >
-      <View >
+    <View style={{flexDirection:'column', justifyContent:'flex-end'}}>
+      <View>
         {todoLists.map((tl) => {
           return (
             <View key={tl.id}>
@@ -52,7 +52,7 @@ export const TodolistsList: React.FC<TodolistsListType> = ({ demo = false }) => 
           )
         })}
       </View>
-      <View  style={{ padding: 20, height: 70 }}>
+      <View style={[globalStyle.border, {paddingHorizontal:15}]}>
         <FullInput addItem={addTodolist} disabled={status === 'loading'}/>
       </View>
 

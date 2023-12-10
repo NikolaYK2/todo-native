@@ -1,15 +1,16 @@
-import React, { ChangeEvent, KeyboardEvent, memo, useCallback, useState } from "react";
-import {Text} from "react-native";
+import React, {memo, useCallback, useState} from "react";
+import {Text, TextInput, View,} from "react-native";
+import {globalStyle} from "assets/style/globalStyle";
+import {TaskStatuses} from "common/api/todolistsApi";
 
 type EditableSpanType = {
   title: string;
   onChange: (newValue: string) => void;
   disabled?: boolean;
+  status?: number
 };
 //Делаем спан инпутом когданужно=========================================================
 export const EditableSpan = /*React.*/ memo((props: EditableSpanType) => {
-  //можно писать теперь просто memo
-  console.log("editblSpan");
   //==Делаем управление не из вне, а state управление самой компонентой
   //=====CONTROL EDITSPAN TASK=====================================================================
   let [editMode, setEditMode] = useState(false);
@@ -23,42 +24,39 @@ export const EditableSpan = /*React.*/ memo((props: EditableSpanType) => {
     props.onChange(title);
   }, [props, title, editMode]);
 
-  const onChangeHandlerValue = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.currentTarget.value);
+  const onChangeHandlerValue = useCallback((e: string) => {
+    // const onChangeHandlerValue = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setTitle(e);
   }, []);
-  const onKeyDownHandlerValue = useCallback(
-    (e: KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === "Enter") {
-        switching();
-      }
-    },
-    [switching]
-  );
+
+  // const onKeyDownHandlerValue = useCallback(
+  //   (e: KeyboardEvent<HTMLInputElement>) => {
+  //     if (e.key === "Enter") {
+  //       switching();
+  //     }
+  //   },
+  //   [switching]
+  // );
 
   // ============================================================================
   return editMode ? (
-    // <TextField
-    //   label={title === "" ? "add & dell" : ""}
-    //   error={!title}
-    //   value={title}
-    //   size="small"
-    //   variant="filled"
-    //   disabled={props.disabled}
-    //   onChange={onChangeHandlerValue}
-    //   onBlur={switching}
-    //   onKeyDown={onKeyDownHandlerValue}
-    //   autoFocus
-    //   sx={{
-    //     input: { color: "#f5f5f5", maxWidth: "150px", padding: "10px 0 0 0" },
-    //   }}
-    // />
-    <Text>Input</Text>
+    <View>
+      <TextInput
+        style={globalStyle.input}
+        onChangeText={onChangeHandlerValue}
+        onBlur={switching}
+        value={props.title}
+        autoFocus
+      />
+    </View>
   ) : (
-    <Text>
-      {/*{title}*/} title
+    <Text onLongPress={switching}
+          style={[{
+            fontSize: 20,
+            fontWeight: 'bold',
+            textDecorationLine: `${props.status === TaskStatuses.Completed ? 'line-through' : 'none'}`
+          }]}>
+      {title}
     </Text>
-    // <span className={s.text} onDoubleClick={switching}>
-    //   {title}
-    // </span>
   );
 });
