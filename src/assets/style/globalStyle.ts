@@ -13,5 +13,5 @@ export const globalStyle = StyleSheet.create({
   checkBox:{
     width:20,
     height:20,
-  }
+  },
 })

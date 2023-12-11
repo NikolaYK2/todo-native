@@ -6,6 +6,10 @@ import {appThunk} from "app/model/appReducer";
 import {Text, View} from "react-native";
 import {TodolistsList} from "features/todolistsList/ui/TodolistsList";
 import {HideKeyboard} from "common/components/hideKeyboard/HideKeyboard";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import { NavigationContainer } from '@react-navigation/native';
+
+
 
 type AppReduxType = {
   demo?: boolean;
@@ -37,25 +41,26 @@ function AppRedux({demo = false}: AppReduxType) {
   }
 
   return (
-    <HideKeyboard>
-      <View style={{flex: 1}}>
-        {/*<ButtonAppBar />*/}
-        <View style={{flex: 1}}>
-          <TodolistsList/>
-        </View>
+        <HideKeyboard>
+          <View style={{flex: 1}}>
+            {/*<ButtonAppBar />*/}
+            <View style={{flex: 1}}>
+              <TodolistsList/>
+            </View>
 
-        {/*<Login/>*/}
+            {/*<Login/>*/}
 
-        {/*<Routes>*/}
-        {/*  <Route path="/it-incubator-todolist-ts-01" element={<Navigate to={"/"} />} />*/}
-        {/*  <Route path="/" element={<TodolistsList demo={demo} />} />*/}
-        {/*  <Route path="/auth" element={<Login />} />*/}
-        {/*  <Route path="/404" element={<h1 style={{ color: "brown", textAlign: "center" }}>404: PAGE NOT FOUND</h1>} />*/}
-        {/*  <Route path="*" element={<Navigate to={"/404"} />} />*/}
-        {/*</Routes>*/}
-      </View>
+            {/*<Routes>*/}
+            {/*  <Route path="/it-incubator-todolist-ts-01" element={<Navigate to={"/"} />} />*/}
+            {/*  <Route path="/" element={<TodolistsList demo={demo} />} />*/}
+            {/*  <Route path="/auth" element={<Login />} />*/}
+            {/*  <Route path="/404" element={<h1 style={{ color: "brown", textAlign: "center" }}>404: PAGE NOT FOUND</h1>} />*/}
+            {/*  <Route path="*" element={<Navigate to={"/404"} />} />*/}
+            {/*</Routes>*/}
+          </View>
 
-    </HideKeyboard>
+        </HideKeyboard>
+
   );
 }
 
