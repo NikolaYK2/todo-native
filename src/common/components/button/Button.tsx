@@ -27,7 +27,7 @@ export const Button: React.FC<ButtonType> = memo(({name, ...props}) => {
       {/*>*/}
       {/*  {name}*/}
       {/*</button>*/}
-      <TouchableOpacity onPress={onClickHandler} onLongPress={onLongClickHandler} disabled={props.disabled}>
+      <TouchableOpacity style={{backgroundColor:props.style}} onPress={onClickHandler} onLongPress={onLongClickHandler} disabled={props.disabled}>
         {props.children}
       </TouchableOpacity>
     </Pressable>

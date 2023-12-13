@@ -1,4 +1,3 @@
-import {StyleSheet} from 'react-native';
 import {Provider} from "react-redux";
 import AppRedux from "app/ui/AppRedux";
 import {store} from "app/model/store";
@@ -10,7 +9,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <SafeAreaProvider>
-        <AppRedux/>
+          <AppRedux/>
       </SafeAreaProvider>
     </Provider>
   );
