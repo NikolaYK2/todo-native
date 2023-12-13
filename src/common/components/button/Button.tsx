@@ -3,15 +3,21 @@ import {Pressable, TouchableOpacity} from "react-native";
 
 type ButtonType = {
   name?: string;
-  callBack: () => void;
+  callBack?: () => void;
+  longPressCallBack?: () => void;
   style?: string;
   disabled?: boolean;
   children: ReactNode
 };
 export const Button: React.FC<ButtonType> = memo(({name, ...props}) => {
-  const onclickHandler = useCallback(() => {
-    props.callBack();
+  const onClickHandler = useCallback(() => {
+    props?.callBack && props.callBack();
   }, [props]);
+
+  const onLongClickHandler = useCallback(() => {
+    props?.longPressCallBack && props.longPressCallBack();
+  }, [props]);
+
   return (
     <Pressable>
       {/*<button*/}
@@ -21,7 +27,7 @@ export const Button: React.FC<ButtonType> = memo(({name, ...props}) => {
       {/*>*/}
       {/*  {name}*/}
       {/*</button>*/}
-      <TouchableOpacity onLongPress={onclickHandler} disabled={props.disabled}>
+      <TouchableOpacity onPress={onClickHandler} onLongPress={onLongClickHandler} disabled={props.disabled}>
         {props.children}
       </TouchableOpacity>
     </Pressable>

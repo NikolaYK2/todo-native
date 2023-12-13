@@ -42,7 +42,7 @@ export const Task = memo((props: Props) => {
   return (
     <View style={styles.tasks}>
 
-      <Button callBack={deleteTaskHandler} disabled={props.task.entityStatus === "loading"}>
+      <Button longPressCallBack={deleteTaskHandler} disabled={props.task.entityStatus === "loading"}>
         <MaterialCommunityIcons name="delete-forever" size={24} color="brown"/>
       </Button>
       {/*<Button callBack={deleteTaskHandler} style={s.dellTask} disabled={props.task.entityStatus === "loading"} />*/}

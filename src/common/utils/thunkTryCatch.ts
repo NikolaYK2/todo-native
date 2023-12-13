@@ -1,6 +1,6 @@
-import { BaseThunkAPI } from "@reduxjs/toolkit/dist/createAsyncThunk";
-import { AppDispatch, AppRootStateType } from "app/model/store";
-import { BaseResponsTodolistsType } from "common/api/todolistsApi";
+import {BaseThunkAPI} from "@reduxjs/toolkit/dist/createAsyncThunk";
+import {AppDispatch, AppRootStateType} from "app/model/store";
+import {BaseResponsTodolistsType} from "common/api/todolistsApi";
 
 export const thunkTryCatch = async <T>( //функция принимает два параметра
   //первым параметром принимает thunkAPI
@@ -14,7 +14,7 @@ export const thunkTryCatch = async <T>( //функция принимает дв
   // dispatch(appAction.setStatus({ status: "loading" }));//теперь это отрабатывает в экстраредьюсерах
   try {
     return await logic();
-  } catch (e) {
+  } catch (e:any) {
     rejectWithValue(e);
     return rejectWithValue(null);
   }

@@ -1,59 +1,23 @@
 import React from "react";
-import {Navigate} from "react-router-dom";
 import {useLogin} from "features/auth/lib/useLogin";
 import {Text, View} from "react-native";
+import {LoginProps} from "common/type/Navigation";
 
-export const Login = () => {
+
+export const Login = ({route, navigation}: LoginProps) => {
   const {formik, isLoggedIn, captchaSelect} = useLogin();
 
-  //MUI CHANGE STYLE===============================================
-  // const theme = createTheme({
-  //   components: {
-  //     MuiTextField: {
-  //       styleOverrides: {
-  //         root: {
-  //           label: {
-  //             color: "grey",
-  //           },
-  //         },
-  //       },
-  //     },
-  //     MuiOutlinedInput: {
-  //       styleOverrides: {
-  //         root: {
-  //           "&:hover": {
-  //             ".MuiOutlinedInput-notchedOutline": {
-  //               borderColor: "#1976D2",
-  //               borderWidth: "2px",
-  //             },
-  //           },
-  //           ".MuiFormLabel-notchedOutline": {
-  //             color: "red",
-  //           },
-  //           ".MuiOutlinedInput-notchedOutline": {
-  //             borderColor: "grey",
-  //             borderWidth: "1px",
-  //           },
-  //         },
-  //         input: {
-  //           color: "#1976D2",
-  //         },
-  //       },
-  //     },
-  //   },
-  // });
-  //==========================================================
+
   // if (isLoggedIn) {
   //   return <Navigate to="/"/>;
   // }
-
+  // if (isLoggedIn) {
+  //   navigation.navigate('Home')
+  // }
   return (
-    <View>
-      <View>
-        <View
-        >
-          <Text>Forma!</Text>
-{/*
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text>Forma!</Text>
+      {/*
           <form onSubmit={formik.handleSubmit}>
             <View>
               <View style={{backgroundColor: "#1976D2"}}>
@@ -119,10 +83,6 @@ export const Login = () => {
             </View>
           </form>
 */}
-        </View>
-      </View>
     </View>
-
-
   );
 };

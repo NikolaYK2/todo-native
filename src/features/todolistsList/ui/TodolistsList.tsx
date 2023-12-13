@@ -36,8 +36,11 @@ export const TodolistsList: React.FC<TodolistsListType> = ({demo = false}) => {
   //   return <Navigate to={"/auth"} />;
   // }
   //
+  // if (!isLoggedIn) {
+  //   navigation.navigate('Login')
+  // }
   return (
-    <View style={{flexDirection:'column', justifyContent:'flex-end'}}>
+    <View style={{flexDirection: 'column', justifyContent: 'flex-end'}}>
       <View>
         {todoLists.map((tl) => {
           return (
@@ -52,7 +55,7 @@ export const TodolistsList: React.FC<TodolistsListType> = ({demo = false}) => {
           )
         })}
       </View>
-      <View style={[globalStyle.border, {paddingHorizontal:15}]}>
+      <View style={[globalStyle.border, {paddingHorizontal: 15}]}>
         <FullInput addItem={addTodolist} disabled={status === 'loading'}/>
       </View>
 

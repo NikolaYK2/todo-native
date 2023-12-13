@@ -30,7 +30,7 @@ export const TodoTitle = memo((props: Props) => {
         <EditableSpan title={title} onChange={onChangeHandlerTitleTodolist}/>
       </View>
       <Button callBack={onClickHandlerDeleteTodolist} disabled={props.todolist.entityStatus === "loading"}>
-        <MaterialCommunityIcons name="delete-forever" size={24} color="black"/>
+        <MaterialCommunityIcons name="delete-forever" size={24} color="brown"/>
       </Button>
       {/*<IconButton onClick={onClickHandlerDeleteTodolist} color={"error"} disabled={props.todolist.entityStatus === "loading"}>*/}
       {/*  <Delete />*/}

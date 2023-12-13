@@ -26,7 +26,7 @@ export const UniversalInput = React.memo(({
     (event: string) => {
       // (event: ChangeEvent<HTMLInputElement>) => {
       if (error !== null) {
-        setError(null); //Когда начинаем писать, ошибка пропадает / можно это прописать и в onKey
+        setError(null);
       }
       setAddTitle(event);
     },

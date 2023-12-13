@@ -1,8 +1,9 @@
 import React, {useCallback, useState} from "react";
 import {UniversalInput} from "common/components/input/UniversalInput";
 import {BaseResponsTodolistsType} from "common/api/todolistsApi";
-import {TouchableOpacity, View} from "react-native";
+import {View} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
+import {Button} from "common/components/button/Button";
 
 type FullInputType = {
   addItem: (addTitle: string) => Promise<unknown>;
@@ -47,9 +48,9 @@ export const FullInput = React.memo(({disabled = false, ...props}: FullInputType
           disabled={disabled}
         />
         <View style={{marginHorizontal: 10}}>
-          <TouchableOpacity>
-            <Ionicons name="add-circle" size={30} color="black"/>
-          </TouchableOpacity>
+            <Button callBack={handlerAddTask}>
+              <Ionicons name="add-circle" size={30} color="black"/>
+            </Button>
         </View>
         {/*<Button callBack={handlerAddTask} style={s.addTask} disabled={disabled} />*/}
       </View>
